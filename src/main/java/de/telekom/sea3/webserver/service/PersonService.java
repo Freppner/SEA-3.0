@@ -1,10 +1,15 @@
 package de.telekom.sea3.webserver.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.telekom.sea3.webserver.repo.PersonRepository;
+
+
 import de.telekom.sea3.webserver.model.*;
+import de.telekom.sea3.webserver.repo.PersonRepository;
 
 @Service
 public class PersonService {
@@ -19,37 +24,43 @@ public class PersonService {
 		this.personRepository = personRepository;
 	}
 
-	public int getSize() {
-		return personRepository.getSize();
+	public long getSize() {
+		return personRepository.count();
 	}
 
-	public Personen getAllPersons() {
-		return new Personen(personRepository.getAll());
+	public Iterable<Person> getAllPersons() {
+		return personRepository.findAll();
 	}
 
-	public Person get(int id) {
-		
-		return new Person("id",  "vorname",  "nachname",  "anrede",  "str",  "hausNr",  "plz",
-				 "ort",  "email");
+	public Optional<Person> get(long id) {
+		return  personRepository.findById(id);
 	}
 
 	public Person add(Person person) {
-		personRepository.add(person);
+		personRepository.save(person);
 		System.out.println("Person wurde angelegt!");
 		return person;
 	}
 
-	public Person del(String id) {
-		personRepository.del(id);
+	
+	public Person del (long id) {
+		personRepository.deleteById(id);
 		System.out.println("Person wurde gelöscht!");
 		return null;
 	}
-
 	
-	// delete??? ;-)
 	
-	// update??? 
+	public Person update (Person person) {
+		personRepository.save(person);
+		System.out.println("Person wurde aktualisiert!");
+		return null;
+	}
 	
-	// delete all ???
+	
+	public Person delAll() {
+		personRepository.deleteAll();
+		System.out.println("Alle Personen wurden gelöscht!");
+		return null;
+	}
 	
 }
