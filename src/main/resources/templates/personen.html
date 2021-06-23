@@ -29,11 +29,13 @@
 				<th scope="col">Anrede:</th>
 				<th scope="col">Vorname:</th>
 				<th scope="col">Nachname:</th>
+				<th scope="col">Geburtsdatum:</th>
 				<th scope="col">Strasse:</th>
 				<th scope="col">HausNr.:</th>
 				<th scope="col">PLZ:</th>
 				<th scope="col">Ort:</th>
 				<th scope="col">E-Mail:</th>
+				<th scope="col">Version:</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -43,11 +45,13 @@
 					<td th:text="${person.anrede}">Anrede</td>
 					<td th:text="${person.vorname}">Vorname</td>
 					<td th:text="${person.nachname}">Nachname</td>
+					<td th:text="${person.bday}">Geburtsdatum</td>
 					<td th:text="${person.str}">Strasse</td>			
 					<td th:text="${person.hausnr}">Hausnr</td>	
 					<td th:text="${person.plz}">Plz</td>	
 					<td th:text="${person.ort}">Ort</td>	
-					<td th:text="${person.email}">Email</td>	
+					<td th:text="${person.email}">Email</td>
+					<td th:text="${person.version}">Version</td>	
 				</tr>
 			</tbody>
 	</table>

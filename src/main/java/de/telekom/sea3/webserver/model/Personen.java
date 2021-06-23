@@ -11,6 +11,10 @@ public class Personen {
 		this.personen = all;
 	}
 
+	public Personen() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public List<Person> getPersonen() {
 		return personen;
 	}

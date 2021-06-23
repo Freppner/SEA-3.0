@@ -28,13 +28,22 @@ public class PersonService {
 		return personRepository.count();
 	}
 
-	public Iterable<Person> getAllPersons() {
-		return personRepository.findAll();
+	public Personen getAllPersons() {
+		Personen personen= new Personen();
+		for (Person p: personRepository.findAll()) {
+			personen.getPersonen().add(p);
+		}
+				
+		return personen;
 	}
 
-	public Optional<Person> get(long id) {
-		return  personRepository.findById(id);
+	
+	public Person get(long id) {
+		if (personRepository.findById(id).isPresent()) {
+			return  personRepository.findById(id).get();
+		}else return null;
 	}
+	
 
 	public Person add(Person person) {
 		personRepository.save(person);

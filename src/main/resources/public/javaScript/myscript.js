@@ -16,11 +16,13 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 			+ "<td>" + laufvariable.anrede + "</td>"
 			+ "<td>" + laufvariable.vorname + "</td>"
 			+ "<td>" + laufvariable.nachname + "</td>"
+			+ "<td>" + laufvariable.bday + "</td>"
 			+ "<td>" + laufvariable.str + "</td>"
 			+ "<td>" + laufvariable.hausnr + "</td>"
 			+ "<td>" + laufvariable.plz + "</td>"
 			+ "<td>" + laufvariable.ort + "</td>"
 			+ "<td>" + laufvariable.email + "</td>"
+			+ "<td>" + laufvariable.version + "</td>"
 			+ "</tr>")
 	}
 }
@@ -49,6 +51,8 @@ function oninputclick(event) {
 	console.log(vorname);
 	var nachname = document.getElementById("nachname").value;
 	console.log(nachname);
+	var bday = document.getElementById("bday").value;
+	console.log(bday);
 	var str = document.getElementById("str").value;
 	console.log(str);
 	var hausnr = document.getElementById("hausnr").value;
@@ -56,11 +60,14 @@ function oninputclick(event) {
 	var plz = document.getElementById("plz").value;
 	console.log(plz);
 	var ort = document.getElementById("ort").value;
-	console.log(email);
+	console.log(ort);
 	var email = document.getElementById("email").value;
-	console.log(nachname);
+	console.log(email);
+	var version = document.getElementById("version").value;
+	console.log(version);
 	var jsondata = `{ "id": "${id}", "anrede": "${anrede}", "vorname": "${vorname}", "nachname": "${nachname}", 
-	"str": "${str}", "hausnr": "${hausnr}", "plz": "${plz}", "ort": "${ort}", "email": "${email}"}`;
+	"bday": "${bday}","str": "${str}", "hausnr": "${hausnr}", "plz": "${plz}", "ort": "${ort}",
+	"email": "${email}", "version": "${version}" }`;
 	console.log(jsondata);
 	fetch("/json/person", {
 		method: 'POST', // or 'PUT'
@@ -96,3 +103,9 @@ inputdel.addEventListener("click", oninputdelclick);
 fetch("/json/persons/all")
 	.then(getJson) 								//  entspricht: .then( irgendwas => irgendwas.json() )
 	.then(getTxtFromJsonUndPackInsHTML) 		// entpricht: cell.textContent = myjson.personen[0].vorname);
+	
+	
+	
+	
+	
+	

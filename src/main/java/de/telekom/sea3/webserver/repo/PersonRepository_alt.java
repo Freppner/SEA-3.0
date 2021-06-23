@@ -29,7 +29,7 @@ public class PersonRepository_alt {
 	public List<Person> getAll() {
 		return personen;
 	}
-
+/*
 	public boolean del(String id) { // löscht das Personen Araray an der Stelle x (id)
 		for (int i = 0; i < personen.size(); i++) {
 			Person person = personen.get(i);
@@ -40,5 +40,5 @@ public class PersonRepository_alt {
 		}
 		return false;
 	}
-	
+	*/
 }

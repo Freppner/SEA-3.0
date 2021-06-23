@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,8 +34,8 @@ public class PersonRestController {
 	}
 	
 	@GetMapping("/json/persons/size")
-	public Size getSize() {
-		return new Size(personService.getSize());
+	public long getSize() {
+		return personService.getSize();
 	}
 	
 	@GetMapping("/json/person/{id}")	// {id} anstelle einer festen ID z.B. 42
@@ -48,11 +49,14 @@ public class PersonRestController {
 	}
 	
 	@DeleteMapping("/json/person/{id}")	// {id} anstelle einer festen ID z.B. 42
-	public Person delPerson(@PathVariable("id") String id) {
+	public Person delPerson(@PathVariable("id") long id) {
 		return personService.del(id);
 	}
 	
-	// update??? 
+	@PutMapping("/json/person")
+	public Person updatePerson(@RequestBody Person person) {
+		return personService.update(person);
+	}
 	
 	// delete all ???
 }
