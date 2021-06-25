@@ -11,16 +11,25 @@ import org.springframework.stereotype.Service;
 import de.telekom.sea3.webserver.model.*;
 import de.telekom.sea3.webserver.repo.PersonRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
+
 @Service
 public class PersonService {
 	
 	private PersonRepository personRepository;
+	static Logger logger = LoggerFactory.getLogger(PersonService.class);
 
 	@Autowired
 	public PersonService(PersonRepository personRepository) {
 		super();
 		System.out.println("PersonService instanziert: " + this.toString());
 		System.out.println("PersonRepository: " + personRepository.toString());
+		logger.info(String.format("[INFO] PersonService instanziert: %s" ,this.getClass().getName()));
+		logger.info(String.format("[INFO] Personrepository durch Annonation instanziert: %s" , personRepository.toString()));
 		this.personRepository = personRepository;
 	}
 
@@ -69,6 +78,7 @@ public class PersonService {
 	public Person delAll() {
 		personRepository.deleteAll();
 		System.out.println("Alle Personen wurden gelöscht!");
+		logger.info(String.format("[INFO] Person wurde gelöscht"));
 		return null;
 	}
 	
